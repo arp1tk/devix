@@ -9,15 +9,26 @@ import { cn } from "@/lib/utils";
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+      setIsMenuOpen(false); // Close the menu after clicking
+    }
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-md border-b border-slate-800">
-      <div className="container mx-auto px-6 md:px-16 lg:px-40 py-3 flex items-center justify-between">
+      <div className="container mx-auto px-6 md:px-16 lg:px-40 py-2 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <div className="relative w-8 h-8 bg-gradient-to-tr from-indigo-600 to-purple-600 rounded-md flex items-center justify-center">
-            <span className="font-bold text-white">D</span>
-          </div>
-          <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">
+        <Link href="/" className="flex items-center gap-3">
+          <img 
+            src="/log.png" 
+            alt="Devix Logo" 
+            className="w-12 h-12 md:w-16 md:h-16 rounded-md"
+          />
+          <span className="text-2xl md:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">
             Devix
           </span>
         </Link>
@@ -25,13 +36,14 @@ export default function Navbar() {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-6">
           {["Services", "Features", "Testimonials", "Contact"].map((item) => (
-            <Link
+            <a
               key={item}
               href={`#${item.toLowerCase()}`}
-              className="text-slate-300 hover:text-white transition-colors"
+              className="text-slate-300 hover:text-white transition-colors cursor-pointer"
+              onClick={(e) => handleSmoothScroll(e, item.toLowerCase())}
             >
               {item}
-            </Link>
+            </a>
           ))}
         </nav>
 
@@ -54,22 +66,30 @@ export default function Navbar() {
       {/* Mobile Navigation */}
       <div
         className={cn(
-          "fixed top-0 left-0 right-0 bg-black/95 border-b border-slate-800 transition-all duration-300",
+          "fixed top-0 left-0 right-0 h-screen bg-black/95 border-b border-slate-800 transition-all duration-300 flex flex-col items-center",
           isMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
         )}
       >
-        <nav className="flex flex-col items-center gap-4 py-6">
+        {/* Close Button */}
+        <button
+          className="absolute top-5 right-6 text-white"
+          onClick={() => setIsMenuOpen(false)}
+        >
+          <X size={28} />
+        </button>
+
+        <nav className="flex flex-col items-center gap-6 pt-20">
           {["Services", "Features", "Testimonials", "Contact"].map((item) => (
-            <Link
+            <a
               key={item}
               href={`#${item.toLowerCase()}`}
-              className="text-slate-300 hover:text-white transition-colors py-2"
-              onClick={() => setIsMenuOpen(false)}
+              className="text-slate-300 hover:text-white transition-colors py-2 cursor-pointer text-lg"
+              onClick={(e) => handleSmoothScroll(e, item.toLowerCase())}
             >
               {item}
-            </Link>
+            </a>
           ))}
-          <Button className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 w-11/12 mt-2">
+          <Button className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 w-11/12 mt-4">
             Get Started
           </Button>
         </nav>

@@ -3,7 +3,7 @@
 import { Button } from "./ui/button"
 import { ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
-
+import { Cover} from "./ui/cover"
 export default function CTA() {
   return (
     <section
@@ -39,14 +39,18 @@ export default function CTA() {
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
           <div className="lg:w-1/2">
             <motion.h2
-              className="text-4xl md:text-5xl font-bold mb-6 text-white leading-tight"
+              className="text-4xl md:text-5xl  font-bold mb-6 text-white leading-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
               Transform Your Ideas into{" "}
+              
+              
               <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+              <Cover>
                 Powerful Solutions
+              </Cover>
               </span>
             </motion.h2>
             <motion.p

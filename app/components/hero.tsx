@@ -84,7 +84,7 @@ export default function Hero() {
                   <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                   <div className="w-3 h-3 rounded-full bg-green-500"></div>
                 </div>
-                <CardItem translateZ="50" className="text-xs text-slate-400 flex-1 text-center">devix-dashboard.js</CardItem>
+                <CardItem translateZ="100" className="text-xs text-slate-400 flex-1 text-center">devix-dashboard.js</CardItem>
               </div>
               <div className="p-4 space-y-4">
                 <div className="grid grid-cols-2 gap-4">

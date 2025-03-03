@@ -10,6 +10,7 @@ import Services from "./components/services";
 import Features from "./components/features";
 import CTA from "./components/cta";
 import {Testimonials} from "./components/testimonials";
+import ProductsSection from "./components/products";
 export default function home(){
   return(
     <>
@@ -19,7 +20,9 @@ export default function home(){
  <Hero/>
  <TechStack/>
  <Services/>
+ <ProductsSection/>
  <Features/>
+ 
  <CTA/>
  {/* <Testimonials/> */}
   {/* <LampDemo /> */}
