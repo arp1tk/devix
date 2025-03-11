@@ -37,7 +37,7 @@ export default function Navbar() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-6">
-          {["Services", "Features", "Testimonials", "Contact"].map((item) => (
+          {["Services", "Features", "Products", "Contact"].map((item) => (
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
@@ -81,7 +81,7 @@ export default function Navbar() {
         </button>
 
         <nav className="flex flex-col items-center gap-6 pt-20">
-          {["Services", "Features", "Testimonials", "Contact"].map((item) => (
+          {["Services", "Features", "Products", "Contact"].map((item) => (
             <a
               key={item}
               href={`#${item.toLowerCase()}`}

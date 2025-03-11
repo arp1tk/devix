@@ -13,7 +13,7 @@ export default function ProductsSection() {
   }, [])
 
   return (
-    <section className="w-full py-20 bg-black">
+    <section id="products" className="w-full py-20 bg-black">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-white mb-4">Our Products</h2>
