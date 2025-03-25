@@ -1,14 +1,12 @@
 "use client"
 import { PinContainer } from "./ui/3d-pin"
-import { Search, BarChart2, FileText, Shield } from "lucide-react"
+import { Search, BarChart2, FileText, Shield, TrendingUp, Clock, Zap, Lock } from "lucide-react"
 import { useEffect, useState } from "react"
 
 export default function ProductsSection() {
-  // Add a loading state to control when the component is visible
   const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
-    // Set loaded to true after component mounts
     setIsLoaded(true)
   }, [])
 
@@ -23,7 +21,7 @@ export default function ProductsSection() {
         </div>
 
         <div className="flex flex-wrap justify-center gap-10">
-          {/* Only show the PinContainer when fully loaded */}
+          {/* Tattletale Card */}
           <div className={`w-[320px] h-[400px] transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
             <PinContainer title="Visit" href="https://devixlab.com" containerClassName="w-full h-full">
               <div className="flex flex-col p-6 tracking-tight text-slate-100/90 w-[320px] h-[400px]">
@@ -78,7 +76,61 @@ export default function ProductsSection() {
             </PinContainer>
           </div>
 
-          {/* Placeholder - now has exact same dimensions as the Tattletale card */}
+          {/* Trading Bot Card */}
+          <div className={`w-[320px] h-[400px] transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+            <PinContainer title="Learn More" href="https://devixlab.com/trading-bot" containerClassName="w-full h-full">
+              <div className="flex flex-col p-6 tracking-tight text-slate-100/90 w-[320px] h-[400px]">
+                <h3 className="text-2xl font-bold text-white mb-2">TradeRiser</h3>
+                <div className="text-sm font-medium text-green-400 mb-4">Automated Trading Bot</div>
+
+                <div className="flex-1 flex flex-col">
+                  <p className="text-slate-300 mb-6">
+                    Intelligent trading bot leveraging real-time market data and AI to optimize trades. Maximize profits with minimal effort.
+                  </p>
+
+                  <div className="grid grid-cols-2 gap-4 mb-6">
+                    <div className="flex items-center gap-2">
+                      <TrendingUp className="w-5 h-5 text-green-400" />
+                      <span className="text-sm text-slate-300">Market Analysis</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Clock className="w-5 h-5 text-green-400" />
+                      <span className="text-sm text-slate-300">24/7 Trading</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Zap className="w-5 h-5 text-green-400" />
+                      <span className="text-sm text-slate-300">Fast Execution</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Lock className="w-5 h-5 text-green-400" />
+                      <span className="text-sm text-slate-300">Secure</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="w-full h-32 rounded-lg bg-gradient-to-r from-green-500 via-teal-500 to-blue-600 opacity-80 relative overflow-hidden">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="flex gap-3">
+                      <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+                        <span className="text-white font-bold text-xs">bt</span>
+                      </div>
+                      <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+                        <span className="text-white font-bold text-xs">et</span>
+                      </div>
+                      <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+                        <span className="text-white font-bold text-xs">bn</span>
+                      </div>
+                      <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+                        <span className="text-white font-bold text-xs">kr</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </PinContainer>
+          </div>
+
+          {/* Placeholder */}
           <div className="w-[320px] h-[400px] flex items-center justify-center">
             <div className="w-full h-full border border-dashed border-slate-700 rounded-2xl flex flex-col items-center justify-center p-6 bg-slate-900/50">
               <div className="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center mb-4">

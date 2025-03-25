@@ -5,6 +5,7 @@ import  {Button}  from "./ui/button"
 import { ArrowRight, Code, Server, Globe } from "lucide-react"
 import { CardBody, CardContainer, CardItem } from "./ui/3d-card";
 import { HoverBorderGradient } from "./ui/hover-border-gradient"
+import { handleSmoothScroll } from "./smoothScroll";
 export default function Hero() {
   const [typedText, setTypedText] = useState("")
   const fullText = "software solutions"
@@ -44,20 +45,22 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
-            <Button className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 h-12 px-6">
+            <Button 
+              className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 h-12 px-6"
+              onClick={() => handleSmoothScroll(null, "contact")}
+            >
               Get Started
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
             <HoverBorderGradient
              containerClassName="rounded-md"
              as="button"
-             className="dark:bg-black bg-white h-11 text-black dark:text-white flex items-center space-x-2">
-            {/* <Button variant="outline" className="border-slate-700 text-white hover:bg-slate-800 h-12 px-6"> */}
+             onClick={() => handleSmoothScroll(null, "contact")}
+             className="dark:bg-black bg-white h-11 text-black dark:text-white flex items-center space-x-2"
+            >
               Book a Consultation
-            {/* </Button> */}
             </HoverBorderGradient>
           </div>
-
 
           <div className="flex items-center gap-2 text-slate-400 pt-4">
             <div className="flex -space-x-2">
