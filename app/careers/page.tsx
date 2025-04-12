@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, ChangeEvent, FormEvent } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -24,8 +24,25 @@ import {
 } from "lucide-react"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 
+type FormData = {
+  fullName: string
+  email: string
+  phone: string
+  education: string
+  program: string
+  graduationYear: string
+  resume: File | null
+  github: string
+  portfolio: string
+  experience: string
+  skills: string
+  whyJoin: string
+  availability: string
+  agreeTerms: boolean
+}
+
 export default function InternshipApplicationForm() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     fullName: "",
     email: "",
     phone: "",
@@ -47,7 +64,7 @@ export default function InternshipApplicationForm() {
   const [error, setError] = useState("")
   const [resumeFileName, setResumeFileName] = useState("")
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData({
       ...formData,
@@ -55,8 +72,8 @@ export default function InternshipApplicationForm() {
     })
   }
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0]
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
     if (file) {
       setFormData({
         ...formData,
@@ -66,14 +83,14 @@ export default function InternshipApplicationForm() {
     }
   }
 
-  const handleCheckboxChange = (checked) => {
+  const handleCheckboxChange = (checked: boolean) => {
     setFormData({
       ...formData,
       agreeTerms: checked,
     })
   }
 
-  const handleSelectChange = (name, value) => {
+  const handleSelectChange = (name: keyof FormData, value: string) => {
     setFormData({
       ...formData,
       [name]: value,
@@ -101,7 +118,7 @@ export default function InternshipApplicationForm() {
     setError("")
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
     setError("")
@@ -112,12 +129,13 @@ export default function InternshipApplicationForm() {
       
       // Append all form fields to FormData
       Object.keys(formData).forEach(key => {
-        if (key === 'resume' && formData[key]) {
-          apiFormData.append('resume', formData[key])
-        } else if (key === 'agreeTerms') {
-          apiFormData.append(key, formData[key].toString())
-        } else if (formData[key] !== null && formData[key] !== undefined) {
-          apiFormData.append(key, formData[key])
+        const formKey = key as keyof FormData
+        if (formKey === 'resume' && formData[formKey]) {
+          apiFormData.append('resume', formData[formKey] as File)
+        } else if (formKey === 'agreeTerms') {
+          apiFormData.append(formKey, formData[formKey].toString())
+        } else if (formData[formKey] !== null && formData[formKey] !== undefined) {
+          apiFormData.append(formKey, formData[formKey] as string)
         }
       })
 
@@ -125,7 +143,6 @@ export default function InternshipApplicationForm() {
       const response = await fetch('/api/submit-application', {
         method: 'POST',
         body: apiFormData,
-        // Don't set Content-Type header - browser will set it with boundary for FormData
       })
 
       const result = await response.json()
@@ -136,7 +153,7 @@ export default function InternshipApplicationForm() {
 
       setSubmitted(true)
     } catch (err) {
-      setError(err.message || 'An error occurred while submitting the application')
+      setError(err instanceof Error ? err.message : 'An error occurred while submitting the application')
       console.error('Submission error:', err)
     } finally {
       setIsSubmitting(false)
@@ -177,16 +194,13 @@ export default function InternshipApplicationForm() {
   }
 
   return (
-    <div className="min-h-screen pt-32 bg-black py-12 md:py-20  relative">
+    <div className="min-h-screen pt-32 bg-black py-12 md:py-20 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-indigo-950/10 to-black"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(120,80,220,0.12),transparent_50%)]"></div>
 
       <div className="container mx-auto px-6 md:px-8 lg:px-12 xl:px-24 relative z-10">
         <div className="max-w-4xl mx-auto">
           <div className="space-y-6 mb-10 text-center">
-            {/* <div className="inline-block px-4 py-1.5 rounded-full bg-indigo-950/50 border border-indigo-800/50 text-indigo-400 text-sm font-medium backdrop-blur-sm">
-              Software Development Internship
-            </div> */}
             <h1 className="text-4xl md:text-5xl font-bold leading-tight">
               Apply for our
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400 ml-2">
@@ -260,8 +274,6 @@ export default function InternshipApplicationForm() {
                           </li>
                         </ul>
                       </div>
-
-                    
                     </div>
                   </AccordionContent>
                 </AccordionItem>
@@ -332,7 +344,6 @@ export default function InternshipApplicationForm() {
                     <Input
                       id="phone"
                       name="phone"
-                    
                       value={formData.phone}
                       onChange={handleInputChange}
                       required
