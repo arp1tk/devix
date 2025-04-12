@@ -16,7 +16,7 @@ export default function home(){
     <>
   
  <div >
- <Navbar/>
+
  <Hero/>
  <TechStack/>
  <Services/>

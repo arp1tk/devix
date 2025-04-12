@@ -1,10 +1,10 @@
 "use client"
-import { useState } from "react"
-import { Button } from "./ui/button"
-import { ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
+import { ArrowRight } from "lucide-react"
+import { useState } from "react"
+import toast, { Toaster } from "react-hot-toast"; // Import toast and Toaster
+import { Button } from "./ui/buttonace"
 import { Cover } from "./ui/cover"
-import toast, { Toaster } from "react-hot-toast" // Import toast and Toaster
 
 export default function CTA() {
   const [formData, setFormData] = useState({
