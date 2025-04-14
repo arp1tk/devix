@@ -201,7 +201,7 @@ export default function InternshipApplicationForm() {
       <div className="container mx-auto px-6 md:px-8 lg:px-12 xl:px-24 relative z-10">
         <div className="max-w-4xl mx-auto">
           <div className="space-y-6 mb-10 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold leading-tight">
+            <h1 className="text-4xl text-white md:text-5xl font-bold leading-tight">
               Apply for our
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400 ml-2">
                 Internship Program
@@ -219,7 +219,7 @@ export default function InternshipApplicationForm() {
             <CardHeader className="relative z-10">
               <div className="flex items-center gap-3">
                 <Briefcase className="h-6 w-6 text-indigo-400" />
-                <CardTitle>Job Description</CardTitle>
+                <CardTitle className="text-white">Job Description</CardTitle>
               </div>
               <CardDescription>Expand to view the complete internship details</CardDescription>
             </CardHeader>
@@ -239,8 +239,8 @@ export default function InternshipApplicationForm() {
                         </h3>
                         <ul className="space-y-2 text-slate-300 ml-6 list-disc">
                           <li>Knowledge of Computer Science principles</li>
-                          <li>Experience or coursework in Back-End Web Development and Software Development</li>
-                          <li>Skills in Programming and Object-Oriented Programming (OOP)</li>
+                          <li>Experience or coursework in Back-End, Front-End Web Development and Software Development</li>
+                          <li>Skills in Node.js, Express.js, and related technologies</li>
                           <li>Strong analytical and problem-solving abilities</li>
                           <li>Ability to work independently and collaboratively in a remote setting</li>
                           <li>Effective communication and teamwork skills</li>
@@ -255,23 +255,19 @@ export default function InternshipApplicationForm() {
                         </h3>
                         <ul className="space-y-2 text-slate-300 ml-6 list-disc">
                           <li>
-                            It is an <span className="font-semibold text-white">Unpaid</span> Internship
+                            It is a <span className="font-semibold text-white">Paid</span> Internship (₹5000 stipend)
                           </li>
-                          <li>Duration will be 2 Months (Extendable)</li>
+                          <li>Duration will be 1 Months (Extendable based on performance)</li>
                           <li>Shortlisted candidates will be Interviewed personally by the team</li>
                           <li>
                             Benefits include:
                             <ul className="ml-6 mt-2 space-y-1 list-circle">
                               <li>LOR (Letter of Recommendation)</li>
                               <li>Certificates</li>
-                              <li>PPO (Pre-placement Offer)</li>
-                              <li>Future permanent Placement</li>
+                              <li>Stipend</li>
                             </ul>
                           </li>
-                          <li className="text-indigo-300 font-medium mt-3">
-                            Note: PPO and placement offer will only be given to the selected candidates based on the
-                            performance evaluation
-                          </li>
+                        
                         </ul>
                       </div>
                     </div>
@@ -285,7 +281,7 @@ export default function InternshipApplicationForm() {
             <div className="absolute inset-0 bg-gradient-to-r from-indigo-600/5 to-purple-600/5"></div>
 
             <CardHeader className="relative z-10">
-              <CardTitle>Application Form</CardTitle>
+              <CardTitle className="text-white">Application Form</CardTitle>
               <CardDescription>Please fill out all the required fields to submit your application</CardDescription>
             </CardHeader>
 
@@ -385,10 +381,10 @@ export default function InternshipApplicationForm() {
                           onValueChange={(value) => handleSelectChange("program", value)}
                           value={formData.program}
                         >
-                          <SelectTrigger className="bg-slate-900/50 border-slate-700 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 h-11">
-                            <SelectValue placeholder="Select program" />
+                          <SelectTrigger className="bg-slate-900/50 border-slate-700 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 h-11 text-white">
+                            <SelectValue placeholder="Select program" className="text-white" />
                           </SelectTrigger>
-                          <SelectContent className="bg-black border-slate-800">
+                          <SelectContent className="bg-slate-900 border-slate-700 text-white">
                             <SelectItem value="computer_science">Computer Science</SelectItem>
                             <SelectItem value="software_engineering">Software Engineering</SelectItem>
                             <SelectItem value="information_technology">Information Technology</SelectItem>
@@ -405,10 +401,10 @@ export default function InternshipApplicationForm() {
                           onValueChange={(value) => handleSelectChange("graduationYear", value)}
                           value={formData.graduationYear}
                         >
-                          <SelectTrigger className="bg-slate-900/50 border-slate-700 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 h-11">
-                            <SelectValue placeholder="Select year" />
+                          <SelectTrigger className="bg-slate-900/50 border-slate-700 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 h-11 text-white">
+                            <SelectValue placeholder="Select year" className="text-white" />
                           </SelectTrigger>
-                          <SelectContent className="bg-black border-slate-800">
+                          <SelectContent className="bg-slate-900 border-slate-700 text-white">
                             <SelectItem value="2024">2024</SelectItem>
                             <SelectItem value="2025">2025</SelectItem>
                             <SelectItem value="2026">2026</SelectItem>
@@ -438,7 +434,7 @@ export default function InternshipApplicationForm() {
                       <Textarea
                         id="skills"
                         name="skills"
-                        placeholder="List your programming languages, frameworks, and tools (e.g., JavaScript, React, Node.js, OOP, etc.)"
+                        placeholder="List your programming languages, frameworks, and tools (e.g., JavaScript, React, Node.js, Express.js, OOP, etc.)"
                         value={formData.skills}
                         onChange={handleInputChange}
                         required
@@ -452,7 +448,7 @@ export default function InternshipApplicationForm() {
                       <Textarea
                         id="experience"
                         name="experience"
-                        placeholder="Describe any relevant projects, coursework, or previous experience in software development"
+                        placeholder="Describe any relevant projects, coursework, or previous experience in software development (e.g., Node.js backend development)"
                         value={formData.experience}
                         onChange={handleInputChange}
                         className="bg-slate-900/50 border-slate-700 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 min-h-[100px] text-white"
@@ -561,37 +557,16 @@ export default function InternshipApplicationForm() {
                         onValueChange={(value) => handleSelectChange("availability", value)}
                         value={formData.availability}
                       >
-                        <SelectTrigger className="bg-slate-900/50 border-slate-700 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 h-11">
-                          <SelectValue placeholder="Select your availability" />
+                        <SelectTrigger className="bg-slate-900/50 border-slate-700 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 h-11 text-white">
+                          <SelectValue placeholder="Select your availability" className="text-white" />
                         </SelectTrigger>
-                        <SelectContent className="bg-black border-slate-800">
+                        <SelectContent className="bg-slate-900 border-slate-700 text-white">
                           <SelectItem value="immediate">Immediate</SelectItem>
                           <SelectItem value="two_weeks">Within 2 weeks</SelectItem>
                           <SelectItem value="one_month">Within 1 month</SelectItem>
                           <SelectItem value="custom">Other (specify in cover letter)</SelectItem>
                         </SelectContent>
                       </Select>
-                    </div>
-
-                    <div className="p-4 rounded-lg border border-indigo-950/50 bg-indigo-950/10 mt-4">
-                      <div className="flex items-start space-x-3">
-                        <Checkbox
-                          id="agreeTerms"
-                          checked={formData.agreeTerms}
-                          onCheckedChange={handleCheckboxChange}
-                          required
-                          className="mt-1 data-[state=checked]:bg-indigo-600 data-[state=checked]:border-indigo-600"
-                        />
-                        <div className="grid gap-1.5 leading-none">
-                          <Label htmlFor="agreeTerms" className="text-sm font-medium leading-none text-slate-200">
-                            I understand this is an unpaid internship for 2 months (extendable){" "}
-                            <span className="text-indigo-400">*</span>
-                          </Label>
-                          <p className="text-sm text-slate-400">
-                            Benefits include LOR, Certificates, and potential PPO based on performance evaluation.
-                          </p>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -636,7 +611,7 @@ export default function InternshipApplicationForm() {
                   <Button
                     type="button"
                     variant="outline"
-                    className="border-slate-700 text-slate-300 hover:bg-slate-800/50 hover:text-slate-200 h-12 px-8 w-full sm:w-auto"
+                    className="border-slate-700 text-slate-300 bg-slate-800/50 hover:bg-slate-700/50 hover:text-white h-12 px-8 w-full sm:w-auto"
                     onClick={resetForm}
                   >
                     <RefreshCw className="mr-2 h-4 w-4" />

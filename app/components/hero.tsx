@@ -25,14 +25,14 @@ export default function Hero() {
   }, [])
 
   return (
-    <section className="pt-20 pb-10 md:pt-40 md:pb-24 container mx-auto px-6 md:px-16 lg:px-40">
+    <section className="pt-20 pb-10 md:pt-40 md:pb-24 bg-black container mx-auto px-6 md:px-16 lg:px-40">
 
       <div className="grid md:grid-cols-2 gap-12 items-center">
         <div className="space-y-6">
           <div className="inline-block px-3 py-1 rounded-full bg-indigo-900/30 border border-indigo-800 text-indigo-400 text-sm font-medium">
             Next-Gen Development & Deployment
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl text-white font-bold leading-tight">
             Transform your ideas into
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400 ml-2">
               {typedText}
@@ -94,7 +94,7 @@ export default function Hero() {
                   <CardItem translateZ="100" className="w-full h-full bg-slate-800/50 rounded-md p-4 space-y-2">
                     <div className="flex items-center gap-2">
                       <Code size={16} className="text-indigo-400" />
-                      <span className="text-sm font-medium">Development</span>
+                      <span className="text-sm text-white font-medium">Development</span>
                     </div>
                     <div className="h-2 bg-indigo-500/20 rounded-full overflow-hidden">
                       <div className="h-full w-4/5 bg-indigo-500 rounded-full"></div>
@@ -104,7 +104,7 @@ export default function Hero() {
                   <CardItem translateZ="80" className="w-full h-full bg-slate-800/50 rounded-md p-4 space-y-2">
                     <div className="flex items-center gap-2">
                       <Server size={16} className="text-purple-400" />
-                      <span className="text-sm font-medium">Deployment</span>
+                      <span className="text-sm text-white font-medium">Deployment</span>
                     </div>
                     <div className="h-2 bg-purple-500/20 rounded-full overflow-hidden">
                       <div className="h-full w-3/5 bg-purple-500 rounded-full"></div>
@@ -117,7 +117,7 @@ export default function Hero() {
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2">
                       <Globe size={16} className="text-teal-400" />
-                      <span className="text-sm font-medium">Project Status</span>
+                      <span className="text-sm text-white font-medium">Project Status</span>
                     </div>
                     <span className="text-xs bg-teal-500/20 text-teal-400 px-2 py-0.5 rounded-full">Active</span>
                   </div>
