@@ -64,7 +64,7 @@ export default function Navbar() {
             >
               {item}
             </button>
-          ))}
+          ))} 
           <Link 
             href="/careers" 
             className="text-slate-300 hover:text-white transition-colors cursor-pointer"
